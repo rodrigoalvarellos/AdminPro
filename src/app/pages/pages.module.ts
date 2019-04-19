@@ -15,6 +15,7 @@ import { Graficas1Component } from './graficas1/graficas1.component';
 import { PagesComponent } from './pages.component';
 import { IncrementadorComponent } from '../components/incrementador/incrementador.component';
 import { GraficoDonasComponent } from '../components/grafico-donas/grafico-donas.component';
+import { AccountSettingsComponent } from './account-settings/account-settings.component';
 
 // temporal
 
@@ -28,7 +29,8 @@ import { GraficoDonasComponent } from '../components/grafico-donas/grafico-donas
         ProgressComponent,
         Graficas1Component,
         IncrementadorComponent,
-        GraficoDonasComponent
+        GraficoDonasComponent,
+        AccountSettingsComponent
     ],
     exports: [
 
