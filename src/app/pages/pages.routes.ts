@@ -10,24 +10,30 @@ import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
 
 import { LoginGuard } from '../services/guards/login.guard';
+import { UsuariosComponent } from './usuarios/usuarios.component';
 
 
 const pagesRoutes: Routes = [
-    {
-        path: '',
-        component: PagesComponent,
-        canActivate: [ LoginGuard ],
-        children: [
-            { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
-            { path: 'progress',  component: ProgressComponent,  data: { titulo: 'Progress' } },
-            { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
-            { path: 'promesas',  component: PromesasComponent,  data: { titulo: 'Promesas' } },
-            { path: 'rxjs',      component: RxjsComponent,      data: { titulo: 'RxJS' } },
-            { path: 'accounts-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
-            { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
-            { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
-        ]
-    }
+  {
+    path: '',
+    component: PagesComponent,
+    canActivate: [LoginGuard],
+    children: [
+      { path: 'dashboard', component: DashboardComponent, data: { titulo: 'Dashboard' } },
+      { path: 'progress', component: ProgressComponent, data: { titulo: 'Progress' } },
+      { path: 'graficas1', component: Graficas1Component, data: { titulo: 'Graficas' } },
+      { path: 'promesas', component: PromesasComponent, data: { titulo: 'Promesas' } },
+      { path: 'rxjs', component: RxjsComponent, data: { titulo: 'RxJS' } },
+      { path: 'accounts-settings', component: AccountSettingsComponent, data: { titulo: 'Ajustes del Tema' } },
+      { path: 'perfil', component: ProfileComponent, data: { titulo: 'Perfil de usuario' } },
+      // Mantenimientos
+      { path: 'usuarios', component: UsuariosComponent, data: { titulo: 'Mantenimiento de usuarios' } },
+
+
+      // Finally
+      { path: '', redirectTo: '/dashboard', pathMatch: 'full' }
+    ]
+  }
 ];
 
-export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );
+export const PAGES_ROUTES = RouterModule.forChild(pagesRoutes);

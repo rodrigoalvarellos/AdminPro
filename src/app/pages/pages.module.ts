@@ -19,37 +19,41 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { PromesasComponent } from './promesas/promesas.component';
 import { RxjsComponent } from './rxjs/rxjs.component';
 import { ProfileComponent } from './profile/profile.component';
+import { UsuariosComponent } from './usuarios/usuarios.component';
+import { ModalUploadComponent } from '../components/modal-upload/modal-upload.component';
 
 // temporal
 
 
 
 @NgModule({
-    declarations: [
-        PagesComponent,
-        DashboardComponent,
-        ProgressComponent,
-        Graficas1Component,
-        IncrementadorComponent,
-        GraficoDonasComponent,
-        AccountSettingsComponent,
-        PromesasComponent,
-        RxjsComponent,
-        ProfileComponent
-    ],
-    exports: [
-        PagesComponent,
-        DashboardComponent,
-        ProgressComponent,
-        Graficas1Component,
-    ],
-    imports: [
-        CommonModule,
-        FormsModule,
-        SharedModule,
-        PAGES_ROUTES,
-        ChartsModule,
-        PipesModule
-    ]
+  declarations: [
+    PagesComponent,
+    DashboardComponent,
+    ProgressComponent,
+    Graficas1Component,
+    IncrementadorComponent,
+    GraficoDonasComponent,
+    AccountSettingsComponent,
+    PromesasComponent,
+    RxjsComponent,
+    ProfileComponent,
+    UsuariosComponent,
+    ModalUploadComponent
+  ],
+  exports: [
+    PagesComponent,
+    DashboardComponent,
+    ProgressComponent,
+    Graficas1Component,
+  ],
+  imports: [
+    CommonModule,
+    FormsModule,
+    SharedModule,
+    PAGES_ROUTES,
+    ChartsModule,
+    PipesModule
+  ]
 })
 export class PagesModule { }

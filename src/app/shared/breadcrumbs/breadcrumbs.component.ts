@@ -12,24 +12,23 @@ export class BreadcrumbsComponent implements OnInit {
 
   titulo: string;
 
-  constructor( private router: Router,
-               private title: Title, private meta: Meta ) {
+  constructor(private router: Router,
+    private title: Title, private meta: Meta) {
 
     this.getDataRoute()
-    .subscribe(
-      data => {
-        console.log(event);
-        this.titulo = data.titulo;
-        this.title.setTitle( this.titulo );
+      .subscribe(
+        data => {
+          this.titulo = data.titulo;
+          this.title.setTitle(this.titulo);
 
-        const metaTag: MetaDefinition = {
-          name: 'description',
-          content: this.titulo
-        };
+          const metaTag: MetaDefinition = {
+            name: 'description',
+            content: this.titulo
+          };
 
-        this.meta.updateTag( metaTag );
-      }
-    );
+          this.meta.updateTag(metaTag);
+        }
+      );
 
   }
 
@@ -39,9 +38,9 @@ export class BreadcrumbsComponent implements OnInit {
   getDataRoute() {
 
     return this.router.events.pipe(
-      filter( evento => evento instanceof ActivationEnd ),
-      filter( (evento: ActivationEnd) => evento.snapshot.firstChild === null ),
-      map( (evento: ActivationEnd) => evento.snapshot.data)
+      filter(evento => evento instanceof ActivationEnd),
+      filter((evento: ActivationEnd) => evento.snapshot.firstChild === null),
+      map((evento: ActivationEnd) => evento.snapshot.data)
     );
 
   }

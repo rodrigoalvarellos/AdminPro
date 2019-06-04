@@ -15,7 +15,7 @@ export class ProfileComponent implements OnInit {
   imagenSubir: File;
   imagenTemp: any;
 
-  constructor( public usuarioService: UsuarioService ) {
+  constructor(public usuarioService: UsuarioService) {
 
     this.usuario = usuarioService.usuario;
 
@@ -24,29 +24,29 @@ export class ProfileComponent implements OnInit {
   ngOnInit() {
   }
 
-  guardar( usuario: Usuario ) {
+  guardar(usuario: Usuario) {
 
     this.usuario.nombre = usuario.nombre;
 
-    if ( !this.usuario.google ) {
+    if (!this.usuario.google) {
       this.usuario.email = usuario.email;
     }
 
-    this.usuarioService.actualizarUsuario( this.usuario ).subscribe();
+    this.usuarioService.actualizarUsuario(this.usuario).subscribe();
 
   }
 
-  seleccionImagen( archivo: File ) {
+  seleccionImagen(archivo: File) {
 
 
-    if ( !archivo ) {
+    if (!archivo) {
       this.imagenSubir = null;
       return;
     }
 
-    if ( archivo.type.indexOf('image')  < 0 ) {
+    if (archivo.type.indexOf('image') < 0) {
 
-      Swal.fire( 'Solo imagenes', 'El archivo seleccionado no es una imagen', 'error');
+      Swal.fire('Solo imagenes', 'El archivo seleccionado no es una imagen', 'error');
       this.imagenSubir = null;
       return;
     }
@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
     this.imagenSubir = archivo;
 
     const reader = new FileReader();
-    const urlImagenTemp = reader.readAsDataURL( archivo );
+    const urlImagenTemp = reader.readAsDataURL(archivo);
 
     reader.onloadend = () => this.imagenTemp = reader.result;
 
@@ -65,7 +65,7 @@ export class ProfileComponent implements OnInit {
 
   cambiarImagen() {
 
-    this.usuarioService.cambiarImagen( this.imagenSubir, this.usuario._id );
+    this.usuarioService.cambiarImagen(this.imagenSubir, this.usuario._id);
 
   }
 
