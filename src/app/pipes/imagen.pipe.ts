@@ -6,7 +6,7 @@ import { URL_SERVICIOS } from '../config/config';
 })
 export class ImagenPipe implements PipeTransform {
 
-  transform( img: string, tipo: string = 'usuario'): any {
+  transform(img: string, tipo: string = 'usuario'): any {
 
     let url = URL_SERVICIOS + '/img';
 
@@ -14,12 +14,12 @@ export class ImagenPipe implements PipeTransform {
       return url + '/usuarios/xxx';
     }
 
-    if ( img.indexOf('https') >= 0 ) {
+    if (img.indexOf('https') >= 0) {
 
       return img;
     }
 
-    switch ( tipo ) {
+    switch (tipo) {
       case 'usuario':
         url += '/usuarios/' + img;
         break;
@@ -27,7 +27,7 @@ export class ImagenPipe implements PipeTransform {
         url += '/medicos/' + img;
         break;
       case 'hospital':
-        url += '/medicos/' + img;
+        url += '/hospitales/' + img;
         break;
       default:
         console.log('Tipo de imagen no existe: usaurios/medicos/hospitales');
