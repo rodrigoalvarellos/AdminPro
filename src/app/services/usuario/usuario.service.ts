@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { Usuario } from '../../models/usuario.model';
 import { HttpClient } from '@angular/common/http';
 import { URL_SERVICIOS } from '../../config/config';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import Swal from 'sweetalert2';
 import { Router } from '@angular/router';
 import { SubirArchivoService } from '../subir_archivo/subir-archivo.service';
+import { throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -98,6 +99,16 @@ export class UsuarioService {
         this.guardarStorage(resp.id, resp.token, resp.usuario, resp.menu);
         return true;
 
+      }),
+      catchError(err => {
+
+        Swal.fire({
+          title: 'Error al Logearse',
+          text: err.error.mensaje,
+          type: 'error'
+        });
+
+        return throwError(err);
       })
     );
 
@@ -117,6 +128,16 @@ export class UsuarioService {
         });
 
         return resp.usuario;
+      }),
+      catchError(err => {
+
+        Swal.fire({
+          title: err.error.mensaje,
+          text: err.error.errors.message,
+          type: 'error'
+        });
+
+        return throwError(err);
       })
     );
 
@@ -147,7 +168,19 @@ export class UsuarioService {
 
       }
 
-      ));
+      ),
+      catchError(err => {
+
+        Swal.fire({
+          title: err.error.mensaje,
+          text: err.error.errors.message,
+          type: 'error'
+        });
+
+        return throwError(err);
+      })
+
+    );
   }
 
   cambiarImagen(archivo: File, id: string) {
